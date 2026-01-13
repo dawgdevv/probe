@@ -1,0 +1,33 @@
+env:
+  base_url: https://jsonplaceholder.typicode.com
+  user_id: "1"
+  post_title: "apitester"
+  post_body: "testing api from cli"
+
+tests:
+  - name: Get all posts
+    request:
+      method: GET
+      path: /posts
+    expect:
+      status: 200
+
+  - name: Get single post using env variable
+    request:
+      method: GET
+      path: /posts/{{user_id}}
+    expect:
+      status: 200
+
+  - name: Create new post with substituted body
+    request:
+      method: POST
+      path: /posts
+      headers:
+        Content-Type: application/json
+      body:
+        title: "{{post_title}}"
+        body: "{{post_body}}"
+        userId: "{{user_id}}"
+    expect:
+      status: 201
