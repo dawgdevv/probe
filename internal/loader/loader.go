@@ -21,3 +21,13 @@ func LoadSuite(path string) (*models.TestSuite, error) {
 
 	return &suite, nil
 }
+
+// LoadSuiteFromString parses a YAML test suite from a string
+func LoadSuiteFromString(yamlContent string) (*models.TestSuite, error) {
+	var suite models.TestSuite
+	if err := yaml.Unmarshal([]byte(yamlContent), &suite); err != nil {
+		return nil, err
+	}
+
+	return &suite, nil
+}
