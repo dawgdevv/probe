@@ -34,7 +34,20 @@ func RunTest(baseURL string, env map[string]string, test models.TestCase) Result
 	var body *bytes.Reader
 
 	if test.Request.Body != nil {
-		b, err := json.Marshal(test.Request.Body)
+		// Substitute env variables in body values
+		resolvedBody := make(map[string]interface{}, len(test.Request.Body))
+		for k, v := range test.Request.Body {
+			if strVal, ok := v.(string); ok {
+				resolved, err := config.SubstituteString(strVal, env)
+				if err != nil {
+					return Result{Name: test.Name, Passed: false, Error: err}
+				}
+				resolvedBody[k] = resolved
+			} else {
+				resolvedBody[k] = v
+			}
+		}
+		b, err := json.Marshal(resolvedBody)
 		if err != nil {
 			return Result{Name: test.Name, Passed: false, Error: err}
 		}

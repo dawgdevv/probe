@@ -1,0 +1,41 @@
+# Test error handling — 404s, wrong status expectations, bad paths
+env:
+  base_url: https://jsonplaceholder.typicode.com
+
+tests:
+  - name: "404 — Non-existent post"
+    request:
+      method: GET
+      path: /posts/99999
+    expect:
+      status: 404
+
+  - name: "404 — Non-existent user"
+    request:
+      method: GET
+      path: /users/99999
+    expect:
+      status: 404
+
+  - name: "404 — Invalid endpoint"
+    request:
+      method: GET
+      path: /nonexistent
+    expect:
+      status: 404
+
+  - name: "EXPECT FAIL — Wrong status (should fail)"
+    request:
+      method: GET
+      path: /posts/1
+    expect:
+      status: 404
+
+  - name: "EXPECT FAIL — Wrong JSON value (should fail)"
+    request:
+      method: GET
+      path: /posts/1
+    expect:
+      status: 200
+      json:
+        id: 999

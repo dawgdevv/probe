@@ -38,9 +38,16 @@ func isComparison(v string) bool {
 }
 
 func compare(actual interface{}, expStr string) error {
-	actualNum, ok := actual.(float64)
+	var actualNum float64
 
-	if !ok {
+	switch v := actual.(type) {
+	case float64:
+		actualNum = v
+	case int:
+		actualNum = float64(v)
+	case int64:
+		actualNum = float64(v)
+	default:
 		return fmt.Errorf("comparison on non-number")
 	}
 

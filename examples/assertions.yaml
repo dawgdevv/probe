@@ -1,0 +1,64 @@
+# Test JSON assertions — exact match, nested fields, comparisons, array length
+env:
+  base_url: https://jsonplaceholder.typicode.com
+
+tests:
+  - name: Exact field match on post
+    request:
+      method: GET
+      path: /posts/1
+    expect:
+      status: 200
+      json:
+        id: 1
+        userId: 1
+        title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit"
+
+  - name: Nested field match on user address
+    request:
+      method: GET
+      path: /users/1
+    expect:
+      status: 200
+      json:
+        username: "Bret"
+        "address.city": "Gwenborough"
+        "address.zipcode": "92998-3874"
+        "company.name": "Romaguera-Crona"
+
+  - name: Array length — all posts greater than 50
+    request:
+      method: GET
+      path: /posts
+    expect:
+      status: 200
+      json:
+        "$.length": ">50"
+
+  - name: Array length — all users greater than 5
+    request:
+      method: GET
+      path: /users
+    expect:
+      status: 200
+      json:
+        "$.length": ">5"
+
+  - name: Array length — comments greater than 100
+    request:
+      method: GET
+      path: /comments
+    expect:
+      status: 200
+      json:
+        "$.length": ">100"
+
+  - name: Numeric comparison on post userId
+    request:
+      method: GET
+      path: /posts/50
+    expect:
+      status: 200
+      json:
+        id: 50
+        userId: 5

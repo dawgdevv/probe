@@ -1,0 +1,65 @@
+# Test env variable substitution in paths, headers, and body
+env:
+  base_url: https://jsonplaceholder.typicode.com
+  user_id: "3"
+  post_id: "25"
+  content_type: application/json
+  post_title: "Substituted Title"
+  post_body: "This body was injected via {{post_title}}"
+
+tests:
+  - name: Get user using env variable
+    request:
+      method: GET
+      path: /users/{{user_id}}
+    expect:
+      status: 200
+      json:
+        id: 3
+        name: "Clementine Bauch"
+
+  - name: Get post using env variable
+    request:
+      method: GET
+      path: /posts/{{post_id}}
+    expect:
+      status: 200
+      json:
+        id: 25
+        userId: 3
+
+  - name: Get comments for post via env
+    request:
+      method: GET
+      path: /posts/{{post_id}}/comments
+    expect:
+      status: 200
+
+  - name: Create post with substituted body
+    request:
+      method: POST
+      path: /posts
+      headers:
+        Content-Type: "{{content_type}}"
+      body:
+        title: "{{post_title}}"
+        body: "{{post_body}}"
+        userId: "{{user_id}}"
+    expect:
+      status: 201
+      json:
+        title: "Substituted Title"
+
+  - name: Get todos for user via env
+    request:
+      method: GET
+      path: /users/{{user_id}}/todos
+    expect:
+      status: 200
+
+  - name: Get albums for user via env
+    request:
+      method: GET
+      path: /users/{{user_id}}/albums
+    expect:
+      status: 200

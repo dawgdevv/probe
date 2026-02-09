@@ -1,0 +1,121 @@
+# Stress test — many parallel requests to test concurrency
+env:
+  base_url: https://jsonplaceholder.typicode.com
+
+tests:
+  - name: "Parallel 01 — Get post 1"
+    request:
+      method: GET
+      path: /posts/1
+    expect:
+      status: 200
+
+  - name: "Parallel 02 — Get post 10"
+    request:
+      method: GET
+      path: /posts/10
+    expect:
+      status: 200
+
+  - name: "Parallel 03 — Get post 20"
+    request:
+      method: GET
+      path: /posts/20
+    expect:
+      status: 200
+
+  - name: "Parallel 04 — Get post 30"
+    request:
+      method: GET
+      path: /posts/30
+    expect:
+      status: 200
+
+  - name: "Parallel 05 — Get post 40"
+    request:
+      method: GET
+      path: /posts/40
+    expect:
+      status: 200
+
+  - name: "Parallel 06 — Get post 50"
+    request:
+      method: GET
+      path: /posts/50
+    expect:
+      status: 200
+
+  - name: "Parallel 07 — Get user 1"
+    request:
+      method: GET
+      path: /users/1
+    expect:
+      status: 200
+
+  - name: "Parallel 08 — Get user 5"
+    request:
+      method: GET
+      path: /users/5
+    expect:
+      status: 200
+
+  - name: "Parallel 09 — Get user 10"
+    request:
+      method: GET
+      path: /users/10
+    expect:
+      status: 200
+
+  - name: "Parallel 10 — Get comments"
+    request:
+      method: GET
+      path: /comments
+    expect:
+      status: 200
+
+  - name: "Parallel 11 — Get albums"
+    request:
+      method: GET
+      path: /albums
+    expect:
+      status: 200
+
+  - name: "Parallel 12 — Get photos"
+    request:
+      method: GET
+      path: /photos
+    expect:
+      status: 200
+
+  - name: "Parallel 13 — Get todos"
+    request:
+      method: GET
+      path: /todos
+    expect:
+      status: 200
+
+  - name: "Parallel 14 — Create post"
+    request:
+      method: POST
+      path: /posts
+      headers:
+        Content-Type: application/json
+      body:
+        title: "Parallel write test"
+        body: "Testing concurrent writes"
+        userId: "1"
+    expect:
+      status: 201
+
+  - name: "Parallel 15 — Create another post"
+    request:
+      method: POST
+      path: /posts
+      headers:
+        Content-Type: application/json
+      body:
+        title: "Another parallel write"
+        body: "More concurrent writes"
+        userId: "2"
+    expect:
+      status: 201

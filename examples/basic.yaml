@@ -1,0 +1,77 @@
+# Basic CRUD operations against JSONPlaceholder
+env:
+  base_url: https://jsonplaceholder.typicode.com
+
+tests:
+  - name: List all posts
+    request:
+      method: GET
+      path: /posts
+    expect:
+      status: 200
+
+  - name: Get single post
+    request:
+      method: GET
+      path: /posts/1
+    expect:
+      status: 200
+      json:
+        id: 1
+        userId: 1
+
+  - name: Create a post
+    request:
+      method: POST
+      path: /posts
+      headers:
+        Content-Type: application/json
+      body:
+        title: "Probe test post"
+        body: "Created by Probe API tester"
+        userId: "1"
+    expect:
+      status: 201
+      json:
+        title: "Probe test post"
+
+  - name: Update a post (PUT)
+    request:
+      method: PUT
+      path: /posts/1
+      headers:
+        Content-Type: application/json
+      body:
+        id: "1"
+        title: "Updated title"
+        body: "Updated body"
+        userId: "1"
+    expect:
+      status: 200
+      json:
+        title: "Updated title"
+
+  - name: Delete a post
+    request:
+      method: DELETE
+      path: /posts/1
+    expect:
+      status: 200
+
+  - name: Get all users
+    request:
+      method: GET
+      path: /users
+    expect:
+      status: 200
+
+  - name: Get user by ID
+    request:
+      method: GET
+      path: /users/1
+    expect:
+      status: 200
+      json:
+        id: 1
+        name: "Leanne Graham"
+        username: "Bret"
