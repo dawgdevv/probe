@@ -3,7 +3,7 @@ package loader
 import (
 	"os"
 
-	"github.com/dawgdevv/Probe/pkg/models"
+	"github.com/dawgdevv/probe/pkg/models"
 	"gopkg.in/yaml.v3"
 )
 

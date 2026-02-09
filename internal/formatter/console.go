@@ -3,7 +3,7 @@ package formatter
 import (
 	"fmt"
 
-	"github.com/dawgdevv/Probe/internal/executor"
+	"github.com/dawgdevv/probe/internal/executor"
 )
 
 // ConsoleFormatter formats test results for terminal output

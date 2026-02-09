@@ -1,6 +1,6 @@
 package service
 
-import "github.com/dawgdevv/Probe/internal/executor"
+import "github.com/dawgdevv/probe/internal/executor"
 
 // ResultCollector defines the interface for collecting test results
 type ResultCollector interface {

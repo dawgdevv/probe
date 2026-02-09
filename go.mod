@@ -1,4 +1,4 @@
-module github.com/dawgdevv/Probe
+module github.com/dawgdevv/probe
 
 go 1.25.5
 

@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/dawgdevv/Probe/internal/executor"
-	"github.com/dawgdevv/Probe/internal/formatter"
-	"github.com/dawgdevv/Probe/internal/loader"
-	"github.com/dawgdevv/Probe/internal/service"
+	"github.com/dawgdevv/probe/internal/executor"
+	"github.com/dawgdevv/probe/internal/formatter"
+	"github.com/dawgdevv/probe/internal/loader"
+	"github.com/dawgdevv/probe/internal/service"
 	"github.com/spf13/cobra"
 )
 

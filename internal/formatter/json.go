@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"time"
 
-	"github.com/dawgdevv/Probe/internal/executor"
+	"github.com/dawgdevv/probe/internal/executor"
 )
 
 // JSONFormatter formats test results as JSON

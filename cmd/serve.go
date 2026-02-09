@@ -10,8 +10,8 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/dawgdevv/Probe/internal/api"
-	"github.com/dawgdevv/Probe/internal/storage"
+	"github.com/dawgdevv/probe/internal/api"
+	"github.com/dawgdevv/probe/internal/storage"
 	"github.com/spf13/cobra"
 )
 

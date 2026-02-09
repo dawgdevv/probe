@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/dawgdevv/Probe/internal/config"
-	"github.com/dawgdevv/Probe/internal/executor"
-	"github.com/dawgdevv/Probe/pkg/models"
+	"github.com/dawgdevv/probe/internal/config"
+	"github.com/dawgdevv/probe/internal/executor"
+	"github.com/dawgdevv/probe/pkg/models"
 )
 
 // Runner is responsible for executing test suites

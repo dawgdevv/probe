@@ -6,7 +6,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/dawgdevv/Probe/internal/web"
+	"github.com/dawgdevv/probe/internal/web"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )

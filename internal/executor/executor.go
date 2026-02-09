@@ -8,9 +8,9 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/dawgdevv/Probe/internal/assert"
-	"github.com/dawgdevv/Probe/internal/config"
-	"github.com/dawgdevv/Probe/pkg/models"
+	"github.com/dawgdevv/probe/internal/assert"
+	"github.com/dawgdevv/probe/internal/config"
+	"github.com/dawgdevv/probe/pkg/models"
 )
 
 type Result struct {
